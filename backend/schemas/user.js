@@ -35,8 +35,7 @@ module.exports = {
       .notEmpty()
       .withMessage('required'),
     body('password')
-      .isLength({ min: 8 })
+      .isString()
       .trim()
-      .withMessage('password must have at least 8 characters'),
   ],
 }
