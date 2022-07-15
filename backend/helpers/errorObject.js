@@ -1,5 +1,5 @@
 class ErrorObject extends Error {
-  constructor(message, statusCode, errors = []) {
+  constructor(statusCode, message, errors = []) {
     super()
 
     this.message = message

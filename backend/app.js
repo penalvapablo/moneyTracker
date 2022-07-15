@@ -7,6 +7,7 @@ const cors = require('cors')
 require('dotenv').config()
 
 const indexRouter = require('./routes/index')
+const { errorConverter, errorHandler } = require('./middlewares/errorHandler')
 
 const port = process.env.PORT || 3000
 
@@ -27,19 +28,13 @@ app.use('/', indexRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next(createError(404))
+  next(createError(404, 'Not Found'))
 })
 
+// error converter
+app.use(errorConverter)
 // error handler
-app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message
-  res.locals.error = req.app.get('env') === 'development' ? err : {}
-
-  // render the error page
-  res.status(err.status || 500)
-  res.render('error')
-})
+app.use(errorHandler)
 
 
 app.listen(port, () => {
