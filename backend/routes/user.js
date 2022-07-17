@@ -2,7 +2,6 @@ const router = require('express').Router()
 const { auth } = require('../middlewares/auth')
 const { validateSchema } = require('../middlewares/validateSchema')
 const { userRegisterSchema, userLoginSchema } = require('../schemas/user')
-const { } = require('../services/user')
 const { register, login, update, destroy } = require('../controllers/user')
 
 router.post('/register', validateSchema(userRegisterSchema), register)
