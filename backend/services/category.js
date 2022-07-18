@@ -24,10 +24,6 @@ module.exports = {
   updateCategory: async (req) => {
     const { name, typeId } = req.body
     const idCategory = req.params.id
-    // const categoryExist = await Category.findOne({ where: { id: idCategory } })
-    // if (!categoryExist) {
-    //   throw new ErrorObject(httpStatus.NOT_FOUND, 'Category not found')
-    // }
     const result = await Category.update(
       {
         name,

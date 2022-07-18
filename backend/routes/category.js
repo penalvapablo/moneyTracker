@@ -4,7 +4,7 @@ const { validateSchema } = require('../middlewares/validateSchema')
 const { categorySchema } = require('../schemas/category')
 const { create, update, getById, getByUser, getAll, delete: deleteCategory } = require('../controllers/category')
 
-router.get('/:userId', auth, getByUser)
+router.get('/', auth, getByUser)
 
 router.post('/', auth, validateSchema(categorySchema), create)
 
