@@ -1,4 +1,4 @@
-const { Movement, Category } = require('../database/models');
+const { Movement, Category, Type } = require('../database/models');
 const { ErrorObject } = require('../helpers/errorObject');
 const httpStatus = require('../helpers/httpStatus');
 
@@ -27,7 +27,19 @@ module.exports = {
     return movementUpdated;
   },
   getMovement: async (id, userId) => {
-    const movement = await Movement.findOne({ where: { id } });
+    const movement = await Movement.findOne({
+      where: { id },
+      include: [
+        {
+          model: Type,
+          attributes: ["name"],
+        },
+        {
+          model: Category,
+          attributes: ["name"],
+        }
+      ],
+    });
     if (movement.userId !== userId) {
       throw new ErrorObject(httpStatus.UNAUTHORIZED, 'Movement not found');
     }
@@ -38,7 +50,19 @@ module.exports = {
   }
   ,
   getMovementsByUser: async (userId) => {
-    const movements = await Movement.findAll({ where: { userId } });
+    const movements = await Movement.findAll({
+      where: { userId },
+      include: [
+        {
+          model: Type,
+          attributes: ["name"],
+        },
+        {
+          model: Category,
+          attributes: ["name"],
+        }
+      ],
+    });
     console.log(movements)
     if (!movements) {
       throw new ErrorObject(httpStatus.NOT_FOUND, 'Movement not found');
