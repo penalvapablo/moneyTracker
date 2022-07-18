@@ -12,13 +12,13 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'Types',
-          key:'id',
+          key: 'id',
         }
       },
       concept: {
         type: Sequelize.STRING
       },
-      amaunt: {
+      amount: {
         type: Sequelize.FLOAT
       },
       date: {
@@ -28,15 +28,15 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: {
           model: 'Categories',
-          key:'id',
+          key: 'id',
         }
       },
       userId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
-          key:'id',
-        }  
+          key: 'id',
+        }
       },
       createdAt: {
         allowNull: false,

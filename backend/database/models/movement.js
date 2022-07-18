@@ -11,21 +11,21 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Movement.belongsTo( models.Type, {
-        foreignKey:'typeId'
+      Movement.belongsTo(models.Type, {
+        foreignKey: 'typeId'
       }),
-      Movement.belongsTo( models.Category, {
-        foreignKey:'categoryId'
-      }),
-      Movement.belongsTo( models.User, {
-        foreignKey:'userId'
-      })
+        Movement.belongsTo(models.Category, {
+          foreignKey: 'categoryId'
+        }),
+        Movement.belongsTo(models.User, {
+          foreignKey: 'userId'
+        })
     }
   }
   Movement.init({
     typeId: DataTypes.INTEGER,
     concept: DataTypes.STRING,
-    amaunt: DataTypes.FLOAT,
+    amount: DataTypes.FLOAT,
     date: DataTypes.DATE,
     categoryId: DataTypes.INTEGER,
     userId: DataTypes.INTEGER
