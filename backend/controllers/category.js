@@ -41,7 +41,8 @@ module.exports = {
   },
   ),
   getByUser: catchAsync(async (req, res, next) => {
-    const categories = await getCategoriesByUser(req.params.userId)
+    const { id: userId } = decodeToken(req)
+    const categories = await getCategoriesByUser(userId)
     endpointResponse({
       res,
       code: httpStatus.OK,
