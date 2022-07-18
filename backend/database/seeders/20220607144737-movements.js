@@ -1,13 +1,13 @@
 'use strict';
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('Movements', [
       {
         typeId: 2,
         categoryId: 1,
         concept: 'chicken',
-        amaunt: 1000,
+        amount: 1000,
         date: new Date,
         userId: 1,
         createdAt: new Date,
@@ -17,7 +17,7 @@ module.exports = {
         typeId: 1,
         categoryId: 1,
         concept: 'july',
-        amaunt: 100000,
+        amount: 100000,
         date: new Date,
         userId: 1,
         createdAt: new Date,
@@ -25,7 +25,7 @@ module.exports = {
       }], {});
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
