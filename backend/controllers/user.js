@@ -4,14 +4,14 @@ const { endpointResponse } = require('../helpers/success')
 const { registerUser, getUserWithEmail, updateUser, deleteUser } = require('../services/user')
 
 module.exports = {
-  register: catchAsync(async (req, res, next) => {
-    const userToken = await registerUser(req.body)
+  register: catchAsync(async (req, res) => {
+    const token = await registerUser(req.body)
     endpointResponse({
       res,
       code: httpStatus.CREATED,
       status: true,
       message: 'User created',
-      body: { userToken },
+      body: { token },
     })
   }),
   login: catchAsync(async (req, res) => {
