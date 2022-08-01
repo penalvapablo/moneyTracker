@@ -63,7 +63,6 @@ module.exports = {
         }
       ],
     });
-    console.log(movements)
     if (!movements) {
       throw new ErrorObject(httpStatus.NOT_FOUND, 'Movement not found');
     }
