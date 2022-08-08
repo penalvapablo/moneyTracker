@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { UIContext } from './Context/UIContext';
 import Swal from 'sweetalert2';
 import { useMutation } from '@tanstack/react-query';
-import { postRequest } from './axiosClient';
+import { postRequest } from './AxiosClient';
 import { LoaderView } from './Loader/Loader';
 
 const schema = object().shape({
