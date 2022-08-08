@@ -4,11 +4,13 @@ const httpStatus = require('../helpers/httpStatus');
 
 module.exports = {
   createMovement: async (data) => {
-    const category = await Category.findOne({ where: { name: data.category, userId: data.userId, typeId: data.typeId } });
+    const { id: typeId } = await Type.findOne({ where: { name: data.type } })
+    const category = await Category.findOne({ where: { name: data.category, userId: data.userId, typeId } });
     if (!category) {
       throw new ErrorObject(httpStatus.NOT_FOUND, 'Category not found');
     }
     data.categoryId = category.id;
+    data.typeId = typeId;
     const movement = await Movement.create(data);
     return movement;
   },

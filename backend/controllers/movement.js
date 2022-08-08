@@ -6,9 +6,9 @@ const { decodeToken } = require('../middlewares/jwt')
 
 module.exports = {
   create: catchAsync(async (req, res) => {
-    const { concept, amount, date, category, typeId } = req.body
+    const { concept, amount, date, category, type } = req.body
     const { id: userId } = decodeToken(req)
-    const movement = await createMovement({ concept, amount, date, category, typeId, userId })
+    const movement = await createMovement({ concept, amount, date, category, type, userId })
     endpointResponse({
       res,
       code: httpStatus.CREATED,

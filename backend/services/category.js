@@ -1,13 +1,13 @@
-const { Category } = require('../database/models')
+const { Category, Type } = require('../database/models')
 const { ErrorObject } = require('../helpers/errorObject')
 const httpStatus = require('../helpers/httpStatus')
 
 module.exports = {
   createCategory: async (data) => {
-    console.log(data)
+    const { id: typeId } = await Type.findOne({ where: { name: data.type } })
+
     const {
       name,
-      typeId,
       userId,
     } = data
     const [category, created] = await Category.findOrCreate({
@@ -47,7 +47,7 @@ module.exports = {
     return category
   },
   getCategoriesByUser: async (userId) => {
-    const categories = await Category.findAll({ where: { userId: userId } })
+    const categories = await Category.findAll({ where: { userId: userId }, include: [{ model: Type, attributes: ["name"] }] })
     if (!categories) {
       throw new ErrorObject(httpStatus.NOT_FOUND, 'Category not found')
     }
