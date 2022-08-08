@@ -14,13 +14,11 @@ export default axiosClient;
 
 export async function getRequest(URL) {
   const res = await axiosClient.get(`/${URL}`)
-  console.log(res)
   return res
 }
 
 export async function postRequest(URL, payload) {
   const res = await axiosClient.post(`/${URL}`, payload)
-  console.log(res)
   return res;
 }
 
