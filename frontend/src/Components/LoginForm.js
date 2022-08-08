@@ -6,7 +6,7 @@ import { TextInput } from './TextInput';
 import { UIContext } from './Context/UIContext';
 import { LoaderView } from './Loader/Loader';
 import { useMutation } from '@tanstack/react-query';
-import { postRequest } from './axiosClient';
+import { postRequest } from './AxiosClient';
 
 const schema = object().shape({
   email: string().email('must be a valid email').required('Please enter your email'),
