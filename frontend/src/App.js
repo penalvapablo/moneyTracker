@@ -11,6 +11,9 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { MovementsAddForm } from './Components/MovementsAddForm';
+import { CategoriesContainer } from './Components/CategoriesContainer';
+import { CategoriesAddForm } from './Components/CategoriesAddForm';
 
 const queryClient = new QueryClient();
 
@@ -23,6 +26,9 @@ function App() {
             <Route path="/" element={<LoginForm />} />
             <Route path="/register" element={<SignForm />} />
             <Route path="/movements" element={<MovementsContainer />} />
+            <Route path="/categories" element={<CategoriesContainer />} />
+            <Route path="/addCategory" element={<CategoriesAddForm />} />
+            <Route path="/addMovement" element={<MovementsAddForm />} />
           </Routes>
         </BrowserRouter>
       </UIProvider>
