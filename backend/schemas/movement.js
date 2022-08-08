@@ -2,11 +2,10 @@ const { body } = require('express-validator')
 
 module.exports = {
   movementSchema: [
-    body('typeId')
-      .toInt()
-      .isInt()
+    body('type')
+      .isString()
       .trim()
-      .withMessage('must be an integer')
+      .withMessage('must be a string')
       .notEmpty()
       .withMessage('required'),
     body('concept')

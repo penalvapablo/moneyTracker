@@ -8,10 +8,10 @@ module.exports = {
       .withMessage('must be a string')
       .notEmpty()
       .withMessage('required'),
-    body('typeId')
-      .isInt()
+    body('type')
+      .isString()
       .trim()
-      .withMessage('must be an integer')
+      .withMessage('must be a string')
       .notEmpty()
       .withMessage('required'),
   ],
