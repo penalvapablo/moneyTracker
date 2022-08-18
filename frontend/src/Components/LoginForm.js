@@ -23,7 +23,7 @@ export const LoginForm = () => {
   }
 
   if (localStorage.getItem('TOKEN')) {
-    return <Navigate to="/movements" />
+    return <Navigate to="/home" />
   }
 
   return (
