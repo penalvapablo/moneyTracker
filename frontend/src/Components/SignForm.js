@@ -19,7 +19,7 @@ export const SignForm = () => {
 
   const register = useMutation((values) => postRequest('user/register', values));
   if (register.isSuccess) {
-    console.log(register)
+
     localStorage.setItem('TOKEN', register.data.data.body.token);
     window.location.reload();
   }
@@ -50,7 +50,7 @@ export const SignForm = () => {
   }
 
   if (localStorage.getItem('TOKEN')) {
-    return <Navigate to="/movements" />
+    return <Navigate to="/home" />
   }
 
   return (
