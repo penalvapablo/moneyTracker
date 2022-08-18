@@ -33,7 +33,6 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'Movement',
     timestamps: true,
-    paranoid: true,
   });
   return Movement;
 };
