@@ -1,5 +1,7 @@
-export const CategoriesTable = ({ data, type }) => {
+import { useNavigate } from 'react-router-dom';
 
+export const CategoriesTable = ({ data, type }) => {
+  const navigate = useNavigate()
   const categories = data.data.body.categories
 
   const typeOfCategory = categories.filter(movement => {
@@ -23,12 +25,15 @@ export const CategoriesTable = ({ data, type }) => {
       </thead>
       <tbody>
         {typeOfCategory.map(category => (
-          <tr key={category.id}>
+          <tr key={category.id} onClick={() => {
+            navigate(`/categories/${category.id}`)
+
+          }}>
             <td>{category.name}</td>
             <td>{category.Type.name}</td>
           </tr>
         ))}
       </tbody>
-    </table>
+    </table >
   )
 }
