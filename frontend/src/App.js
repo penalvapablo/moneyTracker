@@ -14,6 +14,11 @@ import {
 import { MovementsAddForm } from './Components/MovementsAddForm';
 import { CategoriesContainer } from './Components/CategoriesContainer';
 import { CategoriesAddForm } from './Components/CategoriesAddForm';
+import { MovementsDetail } from './Components/MovementsDetail';
+import { CategoriesDetail } from './Components/CategoriesDetail';
+import { CategoriesEditForm } from './Components/CategoriesEditForm';
+import { MovementsEditForm } from './Components/MovementsEditForm';
+import { Home } from './Components/Home';
 
 const queryClient = new QueryClient();
 
@@ -25,10 +30,20 @@ function App() {
           <Routes>
             <Route path="/" element={<LoginForm />} />
             <Route path="/register" element={<SignForm />} />
+
+            <Route path="/home" element={<Home />} />
+
             <Route path="/movements" element={<MovementsContainer />} />
+            <Route path="/addMovement" element={<MovementsAddForm />} />
+            <Route path="/movements/:id" element={<MovementsDetail />} />
+            <Route path="/editMovement/:id" element={<MovementsEditForm />} />
+
             <Route path="/categories" element={<CategoriesContainer />} />
             <Route path="/addCategory" element={<CategoriesAddForm />} />
-            <Route path="/addMovement" element={<MovementsAddForm />} />
+            <Route path="/categories/:id" element={<CategoriesDetail />} />
+            <Route path="/editCategory/:id" element={<CategoriesEditForm />} />
+
+
           </Routes>
         </BrowserRouter>
       </UIProvider>
