@@ -16,12 +16,14 @@ module.exports = {
   },
   updateMovement: async (req) => {
     const { id } = req.params;
-    const { concept, amount, date, category: categoryName, typeId } = req.body;
+    const { concept, amount, date, category: categoryName, type } = req.body;
+    const { id: typeId } = await Type.findOne({ where: { name: type } })
     const category = await Category.findOne({ where: { name: categoryName, typeId: typeId } });
     if (!category) {
       throw new ErrorObject(httpStatus.NOT_FOUND, 'Category not found');
     }
-    const movement = await Movement.update({ concept, amount, date, category, typeId }, { where: { id } });
+    const categoryId = category.id;
+    const movement = await Movement.update({ concept, amount, date, categoryId, typeId }, { where: { id } });
     if (movement[0] === 0) {
       throw new ErrorObject(httpStatus.NOT_FOUND, 'Movement not found');
     }
