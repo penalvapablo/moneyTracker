@@ -22,8 +22,8 @@ export async function postRequest(URL, payload) {
   return res;
 }
 
-export async function patchRequest(URL, payload) {
-  return axiosClient.patch(`/${URL}`, payload).then(response => response);
+export async function putRequest(URL, payload) {
+  return axiosClient.put(`/${URL}`, payload).then(response => response);
 }
 
 export async function deleteRequest(URL) {
