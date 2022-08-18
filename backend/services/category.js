@@ -1,9 +1,10 @@
-const { Category, Type } = require('../database/models')
+const { Category, Type, Movement } = require('../database/models')
 const { ErrorObject } = require('../helpers/errorObject')
 const httpStatus = require('../helpers/httpStatus')
 
 module.exports = {
   createCategory: async (data) => {
+
     const { id: typeId } = await Type.findOne({ where: { name: data.type } })
 
     const {
@@ -58,6 +59,7 @@ module.exports = {
     return categories
   },
   deleteCategory: async (id) => {
+    await Movement.destroy({ where: { categoryId: id } })
     const category = await Category.destroy({
       where: { id },
     })
